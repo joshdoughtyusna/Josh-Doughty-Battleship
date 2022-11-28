@@ -2,7 +2,6 @@ import sys
 import time
 import pygame
 from random import randrange
-import time
 BLACK = (0, 0, 0)
 GREY= (100,100,100)
 GREEN = (0, 223, 0)
@@ -20,33 +19,72 @@ pygame.display.set_caption("BATTLESHIP")
 def main():
     pygame.init()
     SCREEN.fill(BLACK)
-
+# CREATES 8 SHIPS RANDOMLY PLACED ON GRID
     ship1x = randrange(0,500,50)
     ship1y = randrange(0,500,50)
     ship1 = (ship1x, ship1y, 200, 50)  # x placement, y placment, dimension
-    pygame.draw.rect(SCREEN, RED, ship1, 0)
+    pygame.draw.rect(SCREEN,RED, ship1, 0)
     ship2x = randrange(0, 500, 50)
     ship2y = randrange(0, 500, 50)
     ship2 = (ship2x, ship2y, 150, 50)  # x placement, y placment, dimension
-    pygame.draw.rect(SCREEN, BLUE, ship2, 0)
+    pygame.draw.rect(SCREEN, RED, ship2, 0)
     ship3x = randrange(0, 500, 50)
     ship3y = randrange(0, 500, 50)
     ship3 = (ship3x, ship3y, 50, 200)  # x placement, y placment, dimension
-    pygame.draw.rect(SCREEN, PURPLE, ship3, 0)
+    pygame.draw.rect(SCREEN, RED, ship3, 0)
     ship4x = randrange(0, 500, 50)
     ship4y = randrange(0, 500, 50)
     ship4 = (ship4x, ship4y, 50, 100)  # x placement, y placment, dimension
-    pygame.draw.rect(SCREEN, GREEN, ship4, 0)
+    pygame.draw.rect(SCREEN, RED, ship4, 0)
 
+    ship5x = randrange(0, 500, 50)
+    ship5y = randrange(0, 500, 50)
+    ship5 = (ship5x, ship5y, 200, 50)  # x placement, y placment, dimension
+    pygame.draw.rect(SCREEN, BLUE, ship5, 0)
+    ship6x = randrange(0, 500, 50)
+    ship6y = randrange(0, 500, 50)
+    ship6 = (ship6x, ship6y, 150, 50)  # x placement, y placment, dimension
+    pygame.draw.rect(SCREEN, BLUE, ship6, 0)
+    ship7x = randrange(0, 500, 50)
+    ship7y = randrange(0, 500, 50)
+    ship7 = (ship7x, ship7y, 50, 200)  # x placement, y placment, dimension
+    pygame.draw.rect(SCREEN, BLUE, ship7, 0)
+    ship8x = randrange(0, 500, 50)
+    ship8y = randrange(0, 500, 50)
+    ship8 = (ship8x, ship8y, 50, 100)  # x placement, y placment, dimension
+    pygame.draw.rect(SCREEN, BLUE, ship8, 0)
     while True:
         drawGrid()
+        #CHECKS TO SEE IF THE MOUSE COORDINATES = SHIPCOORDINATES
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
-                pygame.mixer.Sound("can.mp3").play()
+                pygame.mixer.Sound("hit.wav").play()
                 mousex, mousey = pygame.mouse.get_pos()
                 print(mousex, mousey)
                 if mousex == ship1x and mousey == ship1y:
-                    pygame.draw.rect(SCREEN, WHITE, ship1, 0)
+                    pygame.draw.rect(SCREEN, GREEN, ship1, 0)
+                    pygame.mixer.Sound("hit.wav").play()
+                elif mousex == ship2x and mousey == ship2y:
+                    pygame.draw.rect(SCREEN, GREEN, ship2, 0)
+                    pygame.mixer.Sound("hit.wav").play()
+                elif mousex == ship3x and mousey == ship3y:
+                    pygame.draw.rect(SCREEN, GREEN, ship3, 0)
+                    pygame.mixer.Sound("hit.wav").play()
+                elif mousex == ship4x and mousey == ship4y:
+                    pygame.draw.rect(SCREEN, GREEN, ship4, 0)
+                    pygame.mixer.Sound("hit.wav").play()
+                elif mousex == ship5x and mousey == ship5y:
+                    pygame.draw.rect(SCREEN, GREEN, ship5, 0)
+                    pygame.mixer.Sound("hit.wav").play()
+                elif mousex == ship6x and mousey == ship6y:
+                    pygame.draw.rect(SCREEN, GREEN, ship6, 0)
+                    pygame.mixer.Sound("hit.wav").play()
+                elif mousex == ship7x and mousey == ship7y:
+                    pygame.draw.rect(SCREEN, GREEN, ship7, 0)
+                    pygame.mixer.Sound("hit.wav").play()
+                elif mousex == ship8x and mousey == ship8y:
+                    pygame.draw.rect(SCREEN, GREEN, ship8, 0)
+                    pygame.mixer.Sound("hit.wav").play()
 
                 else:
 
