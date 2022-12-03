@@ -2,11 +2,15 @@ import sys
 from classic import CLASSIC
 import time
 import pygame
+
+
 def Menu():
     import sys
+    from power_up import POWER
     from classic import CLASSIC
     import time
     import pygame
+    from instructions import Instructions
     from ship import Ship
     from random import randrange
     BLACK = (0, 0, 0)
@@ -45,10 +49,10 @@ def Menu():
     rectp = pygame.Rect(bpx, bpy, 200, 50)
     angle = 0
     pradar = pygame.image.load("radar.png")
-    while True:
+    while True: #PRESTON HELPED WITH MENU
         angle += 1
-        SCREEN.fill(BLACK)
-        block = 50  # Set the size of the grid block
+        # SCREEN.fill(BLACK)
+        # block = 50  # Set the size of the grid block
         # for x in range(0, WINDOW_WIDTH, block):
         #     for y in range(0, WINDOW_HEIGHT, block):
         #         rect = pygame.Rect(x, y, block, block)
@@ -72,16 +76,19 @@ def Menu():
         SCREEN.blit(power, (bpx + 20, bpy))
         for event in pygame.event.get():
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN: #BUTTONS FOR GOING TO DIFFERENT GAME MODES
+
                 if rectc.collidepoint(pygame.mouse.get_pos()):
                     CLASSIC()
-                if rectm.collidepoint(pygame.mouse.get_pos()):
+                elif rectm.collidepoint(pygame.mouse.get_pos()):
                     CLASSIC()
-                if rectp.collidepoint(pygame.mouse.get_pos()):
-                    CLASSIC()
+                elif rectp.collidepoint(pygame.mouse.get_pos()):
+                    POWER()
 
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
         pygame.display.update()
-Menu()
+
+
+
