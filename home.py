@@ -43,7 +43,7 @@ def HOME():
 
     angle = 0
 
-    PI=3.41592653
+    PI=3.141592653
 
 
 
@@ -61,7 +61,7 @@ def HOME():
             angle = angle + 2*PI
         pygame.display.flip()
         time.sleep(0.03)
-        print(angle)
+
 
         grid = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
         block = 50  # Set the size of the grid block
@@ -77,8 +77,12 @@ def HOME():
         pygame.draw.circle(grid, GREEN, (250, 250), 150, 4)
 
         pygame.draw.circle(grid, GREEN, (250, 250), 250, 4)
-
-
+        if angle <= 11.0 and angle >= 10.6:
+            pygame.draw.rect(SCREEN,RED,(50,200,50,50),0)
+        if angle <= 7.9 and angle >= 7.5:
+            pygame.draw.rect(SCREEN, RED, (400, 250, 50, 50), 0)
+        if angle <= 12 and angle >= 11.5:
+            pygame.draw.rect(SCREEN, RED, (150, 300, 50, 50), 0)
 
         if angle <= 9.9 and angle >= 8.7:
             SCREEN.blit(battleship, (bbx + 13, bby+37))
