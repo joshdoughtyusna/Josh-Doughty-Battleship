@@ -163,7 +163,7 @@ def CLASSIC():
             for event in pygame.event.get():
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    #pygame.mixer.Sound("hit.wav").play()
+                    pygame.mixer.Sound("Cannon.mp3").play()
                     shots += 1
                     mousex, mousey = pygame.mouse.get_pos()
                     ds[mousex]=mousey
@@ -181,17 +181,22 @@ def CLASSIC():
                         pygame.draw.rect(SCREEN, RED, ship1, 0)
                         s1 = True
 
+
+
                     elif rect2.collidepoint(pygame.mouse.get_pos()):
                         pygame.draw.rect(SCREEN, RED, ship2, 0)
                         s2 = True
+
 
                     elif rect3.collidepoint(pygame.mouse.get_pos()):
                         pygame.draw.rect(SCREEN, RED, ship3, 0)
                         s3 = True
 
+
                     elif rect4.collidepoint(pygame.mouse.get_pos()):
                         pygame.draw.rect(SCREEN, RED, ship4, 0)
                         s4 = True
+
 
 
 
@@ -208,25 +213,25 @@ def CLASSIC():
 
 
                     #pygame.draw.rect(SCREEN, BLUE, cshot, 0)
-                    #time.sleep(0.3)
+                    time.sleep(0.3)
 
 
 
                     # pygame.draw.rect(SCREEN, BLACK, cshot, 0)
                     if rect5.collidepoint(cx, cy):
-                        pygame.draw.rect(SCREEN, BLACK, ship5, 0)
+                        pygame.draw.rect(SCREEN, BLUE, ship5, 0)
                         e1 = True
 
                     elif rect6.collidepoint(cx, cy):
-                        pygame.draw.rect(SCREEN, BLACK, ship6, 0)
+                        pygame.draw.rect(SCREEN, BLUE, ship6, 0)
                         e2 = True
 
                     elif rect7.collidepoint(cx, cy):
-                        pygame.draw.rect(SCREEN, BLACK, ship7, 0)
+                        pygame.draw.rect(SCREEN, BLUE, ship7, 0)
                         e3 = True
 
                     elif rect8.collidepoint(cx, cy):
-                        pygame.draw.rect(SCREEN, BLACK, ship8, 0)
+                        pygame.draw.rect(SCREEN, BLUE, ship8, 0)
                         e4 = True
 
                     if s1 == True:
@@ -257,12 +262,13 @@ def CLASSIC():
                             space = sfont.render('PRESS SPACE TO CONTINUE', True, RED)
                             shipremain = sfont.render(f'YOU HAVE {ENEMYSHIPS} SHIPS REMAINING', True, RED)
                             losts = sfont.render('YOU LOST A SHIP', True, RED)
-                            pygame.display.set_caption("YOU LOST")
+                            #pygame.display.set_caption("YOU LOST")
                             pygame.draw.rect(SCREEN, BLACK, end, 0)
                             SCREEN.blit(shipremain, (135, 160))
                             SCREEN.blit(losts, (180, 125)),
                             SCREEN.blit(space, (150, 200))
                             grid = False
+                            pygame.mixer.Sound("yoda.mp3").play()
                     if e2 == True:
                         if still6 == True:
                             ENEMYSHIPS -= 1
@@ -271,12 +277,13 @@ def CLASSIC():
                             space = sfont.render('PRESS SPACE TO CONTINUE', True, RED)
                             shipremain = sfont.render(f'YOU HAVE {ENEMYSHIPS} SHIPS REMAINING', True, RED)
                             losts = sfont.render('YOU LOST A SHIP', True, RED)
-                            pygame.display.set_caption("YOU LOST")
+                            #pygame.display.set_caption("YOU LOST")
                             pygame.draw.rect(SCREEN, BLACK, end, 0)
                             SCREEN.blit(shipremain, (135, 160))
                             SCREEN.blit(losts, (180, 125)),
                             SCREEN.blit(space, (150, 200))
                             grid = False
+                            pygame.mixer.Sound("yoda.mp3").play()
                     if e3 == True:
                         if still7 == True:
                             ENEMYSHIPS -= 1
@@ -285,12 +292,13 @@ def CLASSIC():
                             space = sfont.render('PRESS SPACE TO CONTINUE', True, RED)
                             shipremain = sfont.render(f'YOU HAVE {ENEMYSHIPS} SHIPS REMAINING', True, RED)
                             losts = sfont.render('YOU LOST A SHIP', True, RED)
-                            pygame.display.set_caption("YOU LOST")
+                            #pygame.display.set_caption("YOU LOST")
                             pygame.draw.rect(SCREEN, BLACK, end, 0)
                             SCREEN.blit(shipremain, (135, 160))
                             SCREEN.blit(losts, (180, 125)),
                             SCREEN.blit(space, (150, 200))
                             grid = False
+                            pygame.mixer.Sound("yoda.mp3").play()
                     if e4 == True:
                         if still8 == True:
                             ENEMYSHIPS -= 1
@@ -299,12 +307,13 @@ def CLASSIC():
                             space = sfont.render('PRESS SPACE TO CONTINUE', True, RED)
                             shipremain = sfont.render(f'YOU HAVE {ENEMYSHIPS} SHIPS REMAINING', True, RED)
                             losts = sfont.render('YOU LOST A SHIP', True, RED)
-                            pygame.display.set_caption("YOU LOST")
+                            #pygame.display.set_caption("YOU LOST")
                             pygame.draw.rect(SCREEN, BLACK, end, 0)
                             SCREEN.blit(shipremain, (135, 160))
                             SCREEN.blit(losts, (180, 125)),
                             SCREEN.blit(space, (150, 200))
                             grid = False
+                            pygame.mixer.Sound("yoda.mp3").play()
                     print(F'You have made {shots} shots')
                     print(f"You Have {ENEMYSHIPS} ships left")
                     print(f"You Have {YOURSHIPS}  enemy ships left")
@@ -314,10 +323,10 @@ def CLASSIC():
                         SCREEN.blit(pradar, (0, 0))
                         font = pygame.font.SysFont('impact', 60)
                         sfont = pygame.font.SysFont('impact', 30)
-                        quit = sfont.render('Press q to quit', True, BLACK)
-                        lost = font.render('YOU LOST', True, BLACK)
+                        quit = sfont.render('Press q to quit', True, RED)
+                        lost = font.render('YOU LOST', True, RED)
                         pygame.display.set_caption("YOU LOST")
-                        pygame.draw.rect(SCREEN, GREEN, end, 0)
+                        pygame.draw.rect(SCREEN, BLACK, end, 0)
                         SCREEN.blit(lost, (140, 100))
                         SCREEN.blit(quit, (165, 250))
                         grid = False
@@ -351,6 +360,15 @@ def CLASSIC():
                             pygame.draw.rect(SCREEN, RED, ship3, 0)
                         if s4 == True:
                             pygame.draw.rect(SCREEN,RED, ship4,0)
+
+                        if e1 == True:
+                            pygame.draw.rect(SCREEN, BLUE, ship5, 0)
+                        if e2 == True:
+                            pygame.draw.rect(SCREEN, BLUE, ship6, 0)
+                        if e3 == True:
+                            pygame.draw.rect(SCREEN, BLUE, ship7, 0)
+                        if e4 == True:
+                            pygame.draw.rect(SCREEN, BLUE, ship8, 0)
                         for x,y in ds.items():
                             dhit = (x,y, 10, 10)
                             pygame.draw.rect(SCREEN, WHITE, dhit, 0)

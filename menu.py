@@ -66,13 +66,13 @@ def Menu():
         # pygame.draw.rect(SCREEN, BLUE, radar, 0)
         pygame.draw.rect(pradar, BLACK, bbattleship, 0)
         pygame.draw.rect(pradar, BLACK, bpower_up, 0)
-        pygame.draw.rect(pradar, BLACK, bmultiplayer, 0)
+
         pygame.draw.rect(pradar, BLACK, bclassic, 0)
 
         SCREEN.blit(pradar, (0, 0))
         SCREEN.blit(classic, (bcx + 13, bcy))
         SCREEN.blit(battleship, (bbx + 13, bby))
-        SCREEN.blit(multiplayer, (bcx + 20, bmy))
+
         SCREEN.blit(power, (bpx + 20, bpy))
         for event in pygame.event.get():
 
@@ -80,8 +80,7 @@ def Menu():
 
                 if rectc.collidepoint(pygame.mouse.get_pos()):
                     CLASSIC()
-                elif rectm.collidepoint(pygame.mouse.get_pos()):
-                    CLASSIC()
+
                 elif rectp.collidepoint(pygame.mouse.get_pos()):
                     POWER()
 
@@ -89,6 +88,6 @@ def Menu():
                 pygame.quit()
                 sys.exit()
         pygame.display.update()
-
+#Menu()
 
 

@@ -29,13 +29,15 @@ def MULTIPLAYER():
     pygame.init()
     YOURSHIPS = 4
     ENEMYSHIPS = 4
+    p1shots = 0
     game= True
 
 
 
 
 
-    # Ship()
+
+
 
     # CREATES 8 SHIPS RANDOMLY PLACED ON GRID
     while True:
@@ -122,22 +124,21 @@ def MULTIPLAYER():
             ship8y = s8y
             break
     ship1 = (ship1x, ship1y, 200, 50)
-    pygame.draw.rect(SCREEN, RED, ship1, 0)
+    pygame.draw.rect(SCREEN, BLUE, ship1, 0)
     ship2 = (ship2x, ship2y, 150, 50)  # x placement, y placment, dimension
-    pygame.draw.rect(SCREEN, RED, ship2, 0)
+    pygame.draw.rect(SCREEN, BLUE, ship2, 0)
     ship3 = (ship3x, ship3y, 50, 200)  # x placement, y placment, dimension
-    pygame.draw.rect(SCREEN, RED, ship3, 0)
+    pygame.draw.rect(SCREEN, BLUE, ship3, 0)
     ship4 = (ship4x, ship4y, 50, 100)  # x placement, y placment, dimension
-    pygame.draw.rect(SCREEN, RED, ship4, 0)
-    # #Enemy ships
+    pygame.draw.rect(SCREEN, BLUE, ship4, 0)
     ship5 = (ship5x, ship5y, 200, 50)  # x placement, y placment, dimension
-    pygame.draw.rect(SCREEN, GREEN, ship5, 0)
+    pygame.draw.rect(SCREEN, BLUE, ship5, 0)
     ship6 = (ship6x, ship6y, 150, 50)  # x placement, y placment, dimension
-    pygame.draw.rect(SCREEN, GREEN, ship6, 0)
+    pygame.draw.rect(SCREEN, BLUE, ship6, 0)
     ship7 = (ship7x, ship7y, 50, 200)  # x placement, y placment, dimension
-    pygame.draw.rect(SCREEN, GREEN, ship7, 0)
+    pygame.draw.rect(SCREEN, BLUE, ship7, 0)
     ship8 = (ship8x, ship8y, 50, 100)  # x placement, y placment, dimension
-    pygame.draw.rect(SCREEN, GREEN, ship8, 0)
+    pygame.draw.rect(SCREEN, BLUE, ship8, 0)
     s1 = False
 
     s2 = False
@@ -157,263 +158,303 @@ def MULTIPLAYER():
     still8 = True
     shots = 0
     grid = True
-    while True:
-        # drawGrid()
-        if grid == True:
-            block = 50  # Set the size of the grid block
-            for x in range(0, WINDOW_WIDTH, block):
-                for y in range(0, WINDOW_HEIGHT, block):
-                    rect = pygame.Rect(x, y, block, block)
-                    pygame.draw.rect(SCREEN, GREEN, rect, 1)
+    rect1 = pygame.Rect(ship1x, ship1y, 200, 50)
+    rect2 = pygame.Rect(ship2x, ship2y, 150, 50)
+    rect3 = pygame.Rect(ship3x, ship3y, 50, 200)
+    rect4 = pygame.Rect(ship4x, ship4y, 50, 100)
+    rect5 = pygame.Rect(ship5x, ship5y, 200, 50)
+    rect6 = pygame.Rect(ship6x, ship6y, 150, 50)
+    rect7 = pygame.Rect(ship7x, ship7y, 50, 200)
+    rect8 = pygame.Rect(ship8x, ship8y, 50, 100)
 
-        # # CHECKS TO SEE IF THE MOUSE COORDINATES = SHIPCOORDINATES
-        # for event in pygame.event.get():
-        #
-        #     if event.type == pygame.MOUSEBUTTONDOWN:
-        #         # pygame.mixer.Sound("hit.wav").play()
-        #         shots += 1
-        #         mousex, mousey = pygame.mouse.get_pos()
-        #
-        #         rect1 = pygame.Rect(ship1x, ship1y, 200, 50)
-        #         rect2 = pygame.Rect(ship2x, ship2y, 150, 50)
-        #         rect3 = pygame.Rect(ship3x, ship3y, 50, 200)
-        #         rect4 = pygame.Rect(ship4x, ship4y, 50, 100)
-        #         rect5 = pygame.Rect(ship5x, ship5y, 200, 50)
-        #         rect6 = pygame.Rect(ship6x, ship6y, 150, 50)
-        #         rect7 = pygame.Rect(ship7x, ship7y, 50, 200)
-        #         rect8 = pygame.Rect(ship8x, ship8y, 50, 100)
-        #         if rect1.collidepoint(pygame.mouse.get_pos()):
-        #             pygame.draw.rect(SCREEN, RED, ship1, 0)
-        #             s1 = True
-        #
-        #         elif rect2.collidepoint(pygame.mouse.get_pos()):
-        #             pygame.draw.rect(SCREEN, RED, ship2, 0)
-        #             s2 = True
-        #
-        #         elif rect3.collidepoint(pygame.mouse.get_pos()):
-        #             pygame.draw.rect(SCREEN, RED, ship3, 0)
-        #             s3 = True
-        #
-        #         elif rect4.collidepoint(pygame.mouse.get_pos()):
-        #             pygame.draw.rect(SCREEN, RED, ship4, 0)
-        #             s4 = True
-        #
-        #
-        #
-        #
-        #         else:
-        #             hit = (mousex, mousey, 10, 10)
-        #             pygame.draw.rect(SCREEN, WHITE, hit, 0)
-        #
-        #         cx = randrange(0, 500, 50)
-        #         cy = randrange(0, 500, 50)
-        #
-        #         cshot = (cx, cy, 50, 50)
-        #         eshot = (cx, cy, 50, 50)
-        #
-        #         # pygame.draw.rect(SCREEN, BLUE, cshot, 0)
-        #         # time.sleep(0.3)
-        #
-        #         # pygame.draw.rect(SCREEN, BLACK, cshot, 0)
-        #         if rect5.collidepoint(cx, cy):
-        #             pygame.draw.rect(SCREEN, BLACK, ship5, 0)
-        #             e1 = True
-        #
-        #         elif rect6.collidepoint(cx, cy):
-        #             pygame.draw.rect(SCREEN, BLACK, ship6, 0)
-        #             e2 = True
-        #
-        #         elif rect7.collidepoint(cx, cy):
-        #             pygame.draw.rect(SCREEN, BLACK, ship7, 0)
-        #             e3 = True
-        #
-        #         elif rect8.collidepoint(cx, cy):
-        #             pygame.draw.rect(SCREEN, BLACK, ship8, 0)
-        #             e4 = True
-        #
-        #         if s1 == True:
-        #             if still1 == True:
-        #                 YOURSHIPS -= 1
-        #                 still1 = False
-        #
-        #         if s2 == True:
-        #             if still2 == True:
-        #                 YOURSHIPS -= 1
-        #                 still2 = False
-        #
-        #         if s3 == True:
-        #             if still3 == True:
-        #                 YOURSHIPS -= 1
-        #                 still3 = False
-        #
-        #         if s4 == True:
-        #             if still4 == True:
-        #                 YOURSHIPS -= 1
-        #                 still4 = False
-        #
-        #         if e1 == True:
-        #             if still5 == True:
-        #                 ENEMYSHIPS -= 1
-        #                 still5 = False
-        #                 # sfont = pygame.font.SysFont('impact', 20)
-        #                 # space = sfont.render('PRESS SPACE TO CONTINUE', True, RED)
-        #                 # losts = sfont.render('YOU LOST A SHIP', True, RED)
-        #                 # pygame.display.set_caption("YOU LOST")
-        #                 # pygame.draw.rect(SCREEN, BLACK, end, 0)
-        #                 # SCREEN.blit(losts, (180, 125))
-        #                 # SCREEN.blit(space, (150, 200))
-        #                 # grid = False
-        #         if e2 == True:
-        #             if still6 == True:
-        #                 ENEMYSHIPS -= 1
-        #                 still6 = False
-        #                 # sfont = pygame.font.SysFont('impact', 20)
-        #                 # space = sfont.render('PRESS SPACE TO CONTINUE', True, RED)
-        #                 # losts = sfont.render('YOU LOST A SHIP', True, RED)
-        #                 # pygame.display.set_caption("YOU LOST")
-        #                 # pygame.draw.rect(SCREEN, BLACK, end, 0)
-        #                 # SCREEN.blit(losts, (180, 125))
-        #                 # SCREEN.blit(space, (150, 200))
-        #                 # grid = False
-        #         if e3 == True:
-        #             if still7 == True:
-        #                 ENEMYSHIPS -= 1
-        #                 still7 = False
-        #                 # sfont = pygame.font.SysFont('impact', 20)
-        #                 # space = sfont.render('PRESS SPACE TO CONTINUE', True, RED)
-        #                 # losts = sfont.render('YOU LOST A SHIP', True, RED)
-        #                 # pygame.display.set_caption("YOU LOST")
-        #                 # pygame.draw.rect(SCREEN, BLACK, end, 0)
-        #                 # SCREEN.blit(losts, (180, 125))
-        #                 # SCREEN.blit(space, (150, 200))
-        #                 # grid = False
-        #         if e4 == True:
-        #             if still8 == True:
-        #                 ENEMYSHIPS -= 1
-        #                 still8 = False
-        #                 # sfont = pygame.font.SysFont('impact', 20)
-        #                 # space = sfont.render('PRESS SPACE TO CONTINUE', True, RED)
-        #                 # losts = sfont.render('YOU LOST A SHIP', True, RED)
-        #                 # pygame.display.set_caption("YOU LOST")
-        #                 # pygame.draw.rect(SCREEN, BLACK, end, 0)
-        #                 # SCREEN.blit(losts, (180, 125))
-        #                 # SCREEN.blit(space, (150, 200))
-        #                 # grid = False
-        #         print(F'You have made {shots} shots')
-        #         print(f"You Have {ENEMYSHIPS} ships left")
-        #         print(f"You Have {YOURSHIPS}  enemy ships left")
-        #
-        #         if e1 == True and e2 == True and e3 == True and e4 == True:
-        #             pradar = pygame.image.load("radar.png")
-        #             SCREEN.blit(pradar, (0, 0))
-        #             font = pygame.font.SysFont('impact', 60)
-        #             sfont = pygame.font.SysFont('impact', 30)
-        #             quit = sfont.render('Press q to quit', True, BLACK)
-        #             lost = font.render('YOU LOST', True, BLACK)
-        #             pygame.display.set_caption("YOU LOST")
-        #             pygame.draw.rect(SCREEN, GREEN, end, 0)
-        #             SCREEN.blit(lost, (140, 100))
-        #             SCREEN.blit(quit, (165, 250))
-        #             grid = False
-        #         if s1 == True and s2 == True and s3 == True and s4 == True:
-        #             pradar = pygame.image.load("radar.png")
-        #             SCREEN.blit(pradar, (0, 0))
-        #             pygame.display.set_caption("YOU WON")
-        #             font = pygame.font.SysFont('impact', 60)
-        #             sfont = pygame.font.SysFont('impact', 30)
-        #             quit = sfont.render('Press q to quit', True, WHITE)
-        #             win = font.render('YOU WON', True, WHITE)
-        #             pygame.display.set_caption("YOU LOST")
-        #             pygame.draw.rect(SCREEN, BLACK, end, 0)
-        #             SCREEN.blit(win, (140, 100))
-        #             SCREEN.blit(quit, (165, 250))
-        #             grid = False
-        #     if event.type == pygame.KEYDOWN:
-        #         if event.key == pygame.K_q:  # PRESTON WILSON HELPED
-        #             pygame.quit()
-        #             sys.exit()
-        #
-        #         if event.key == pygame.K_SPACE:
-        #             grid = True
-        #             pygame.draw.rect(SCREEN, BLACK, end, 0)
-        #
-        #     if event.type == pygame.QUIT:
-        #         pygame.quit
-        #
-        #         sys.exit()
-    def p1 ():
-
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-
-                # pygame.mixer.Sound("hit.wav").play()
-
-                mousex, mousey = pygame.mouse.get_pos()
-
-                rect1 = pygame.Rect(ship1x, ship1y, 200, 50)
-                rect2 = pygame.Rect(ship2x, ship2y, 150, 50)
-                rect3 = pygame.Rect(ship3x, ship3y, 50, 200)
-                rect4 = pygame.Rect(ship4x, ship4y, 50, 100)
-
-                if rect1.collidepoint(pygame.mouse.get_pos()):
-                    pygame.draw.rect(SCREEN, RED, ship1, 0)
-                    s1 = True
-
-                elif rect2.collidepoint(pygame.mouse.get_pos()):
-                    pygame.draw.rect(SCREEN, RED, ship2, 0)
-                    s2 = True
-
-                elif rect3.collidepoint(pygame.mouse.get_pos()):
-                    pygame.draw.rect(SCREEN, RED, ship3, 0)
-                    s3 = True
-
-                elif rect4.collidepoint(pygame.mouse.get_pos()):
-                    pygame.draw.rect(SCREEN, RED, ship4, 0)
-                    s4 = True
-                else:
-                    hit = (mousex, mousey, 10, 10)
-                    pygame.draw.rect(SCREEN, WHITE, hit, 0)
-
-    def p2():
-
-        rect5 = pygame.Rect(ship5x, ship5y, 200, 50)
-        rect6 = pygame.Rect(ship6x, ship6y, 150, 50)
-        rect7 = pygame.Rect(ship7x, ship7y, 50, 200)
-        rect8 = pygame.Rect(ship8x, ship8y, 50, 100)
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                mousex, mousey = pygame.mouse.get_pos()
+    if grid == True:
+        block = 50  # Set the size of the grid block
+        for x in range(0, WINDOW_WIDTH, block):
+            for y in range(0, WINDOW_HEIGHT, block):
+                rect = pygame.Rect(x, y, block, block)
+                pygame.draw.rect(SCREEN, GREEN, rect, 1)
 
 
 
+    def P1():
+        p1shots = 0
+        ds1 = {}
+        while (1):
+            for event in pygame.event.get():
 
-            if rect5.collidepoint(pygame.mouse.get_pos()):
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    pygame.mixer.Sound("Cannon.mp3").play()
+                    p1shots += 1
+                    mousex, mousey = pygame.mouse.get_pos()
+                    ds1[mousex] = mousey
 
-                pygame.draw.rect(SCREEN, BLACK, ship5, 0)
-                e1 = True
+                    if rect1.collidepoint(pygame.mouse.get_pos()):
+                        pygame.draw.rect(SCREEN, RED, ship1, 0)
+                        s1 = True
 
-            elif rect6.collidepoint(pygame.mouse.get_pos()):
-                pygame.draw.rect(SCREEN, BLACK, ship6, 0)
-                e2 = True
 
-            elif rect7.collidepoint(pygame.mouse.get_pos()):
-                pygame.draw.rect(SCREEN, BLACK, ship7, 0)
-                e3 = True
 
-            elif rect8.collidepoint(pygame.mouse.get_pos()):
-                pygame.draw.rect(SCREEN, BLACK, ship8, 0)
-                e4 = True
-            else:
-                hit = (mousex, mousey, 10, 10)
-                pygame.draw.rect(SCREEN, WHITE, hit, 0)
-    def transition():
+                    elif rect2.collidepoint(pygame.mouse.get_pos()):
+                        pygame.draw.rect(SCREEN, RED, ship2, 0)
+                        s2 = True
+
+
+                    elif rect3.collidepoint(pygame.mouse.get_pos()):
+                        pygame.draw.rect(SCREEN, RED, ship3, 0)
+                        s3 = True
+
+
+                    elif rect4.collidepoint(pygame.mouse.get_pos()):
+                        pygame.draw.rect(SCREEN, RED, ship4, 0)
+                        s4 = True
+
+                    else:
+                        hit = (mousex, mousey, 10, 10)
+                        pygame.draw.rect(SCREEN, WHITE, hit, 0)
+                break
+    def Transition():
         SCREEN.fill(WHITE)
 
-        if game == True:
-            while True:
-                p1()
-                transition()
-                p2()
-                transition()
-        pygame.display.update()
+    while True:
+        grid= False
+
+        Transition()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # for event in pygame.event.get():
+        #     for event in pygame.event.get():
+        #
+        #         if event.type == pygame.MOUSEBUTTONDOWN:
+        #             pygame.mixer.Sound("Cannon.mp3").play()
+        #             shots += 1
+        #             mousex, mousey = pygame.mouse.get_pos()
+        #             ds[mousex] = mousey
+        #
+        #
+        #
+        #             if rect1.collidepoint(pygame.mouse.get_pos()):
+        #                 pygame.draw.rect(SCREEN, RED, ship1, 0)
+        #                 s1 = True
+        #
+        #
+        #
+        #             elif rect2.collidepoint(pygame.mouse.get_pos()):
+        #                 pygame.draw.rect(SCREEN, RED, ship2, 0)
+        #                 s2 = True
+        #
+        #
+        #             elif rect3.collidepoint(pygame.mouse.get_pos()):
+        #                 pygame.draw.rect(SCREEN, RED, ship3, 0)
+        #                 s3 = True
+        #
+        #
+        #             elif rect4.collidepoint(pygame.mouse.get_pos()):
+        #                 pygame.draw.rect(SCREEN, RED, ship4, 0)
+        #                 s4 = True
+        #
+        #
+        #
+        #
+        #
+        #             else:
+        #                 hit = (mousex, mousey, 10, 10)
+        #                 pygame.draw.rect(SCREEN, WHITE, hit, 0)
+        #
+        #             cx = randrange(0, 500, 50)
+        #             cy = randrange(0, 500, 50)
+        #
+        #             cshot = (cx, cy, 50, 50)
+        #             eshot = (cx, cy, 50, 50)
+        #
+        #             # pygame.draw.rect(SCREEN, BLUE, cshot, 0)
+        #             time.sleep(0.3)
+        #
+        #             # pygame.draw.rect(SCREEN, BLACK, cshot, 0)
+        #             if rect5.collidepoint(cx, cy):
+        #                 pygame.draw.rect(SCREEN, BLUE, ship5, 0)
+        #                 e1 = True
+        #
+        #             elif rect6.collidepoint(cx, cy):
+        #                 pygame.draw.rect(SCREEN, BLUE, ship6, 0)
+        #                 e2 = True
+        #
+        #             elif rect7.collidepoint(cx, cy):
+        #                 pygame.draw.rect(SCREEN, BLUE, ship7, 0)
+        #                 e3 = True
+        #
+        #             elif rect8.collidepoint(cx, cy):
+        #                 pygame.draw.rect(SCREEN, BLUE, ship8, 0)
+        #                 e4 = True
+        #
+        #             if s1 == True:
+        #                 if still1 == True:
+        #                     YOURSHIPS -= 1
+        #                     still1 = False
+        #
+        #             if s2 == True:
+        #                 if still2 == True:
+        #                     YOURSHIPS -= 1
+        #                     still2 = False
+        #
+        #             if s3 == True:
+        #                 if still3 == True:
+        #                     YOURSHIPS -= 1
+        #                     still3 = False
+        #
+        #             if s4 == True:
+        #                 if still4 == True:
+        #                     YOURSHIPS -= 1
+        #                     still4 = False
+        #
+        #             if e1 == True:
+        #                 if still5 == True:
+        #                     ENEMYSHIPS -= 1
+        #                     still5 = False
+        #                     sfont = pygame.font.SysFont('impact', 20)
+        #                     space = sfont.render('PRESS SPACE TO CONTINUE', True, RED)
+        #                     shipremain = sfont.render(f'YOU HAVE {ENEMYSHIPS} SHIPS REMAINING', True, RED)
+        #                     losts = sfont.render('YOU LOST A SHIP', True, RED)
+        #                     # pygame.display.set_caption("YOU LOST")
+        #                     pygame.draw.rect(SCREEN, BLACK, end, 0)
+        #                     SCREEN.blit(shipremain, (135, 160))
+        #                     SCREEN.blit(losts, (180, 125)),
+        #                     SCREEN.blit(space, (150, 200))
+        #                     grid = False
+        #                     pygame.mixer.Sound("yoda.mp3").play()
+        #             if e2 == True:
+        #                 if still6 == True:
+        #                     ENEMYSHIPS -= 1
+        #                     still6 = False
+        #                     sfont = pygame.font.SysFont('impact', 20)
+        #                     space = sfont.render('PRESS SPACE TO CONTINUE', True, RED)
+        #                     shipremain = sfont.render(f'YOU HAVE {ENEMYSHIPS} SHIPS REMAINING', True, RED)
+        #                     losts = sfont.render('YOU LOST A SHIP', True, RED)
+        #                     # pygame.display.set_caption("YOU LOST")
+        #                     pygame.draw.rect(SCREEN, BLACK, end, 0)
+        #                     SCREEN.blit(shipremain, (135, 160))
+        #                     SCREEN.blit(losts, (180, 125)),
+        #                     SCREEN.blit(space, (150, 200))
+        #                     grid = False
+        #                     pygame.mixer.Sound("yoda.mp3").play()
+        #             if e3 == True:
+        #                 if still7 == True:
+        #                     ENEMYSHIPS -= 1
+        #                     still7 = False
+        #                     sfont = pygame.font.SysFont('impact', 20)
+        #                     space = sfont.render('PRESS SPACE TO CONTINUE', True, RED)
+        #                     shipremain = sfont.render(f'YOU HAVE {ENEMYSHIPS} SHIPS REMAINING', True, RED)
+        #                     losts = sfont.render('YOU LOST A SHIP', True, RED)
+        #                     # pygame.display.set_caption("YOU LOST")
+        #                     pygame.draw.rect(SCREEN, BLACK, end, 0)
+        #                     SCREEN.blit(shipremain, (135, 160))
+        #                     SCREEN.blit(losts, (180, 125)),
+        #                     SCREEN.blit(space, (150, 200))
+        #                     grid = False
+        #                     pygame.mixer.Sound("yoda.mp3").play()
+        #             if e4 == True:
+        #                 if still8 == True:
+        #                     ENEMYSHIPS -= 1
+        #                     still8 = False
+        #                     sfont = pygame.font.SysFont('impact', 20)
+        #                     space = sfont.render('PRESS SPACE TO CONTINUE', True, RED)
+        #                     shipremain = sfont.render(f'YOU HAVE {ENEMYSHIPS} SHIPS REMAINING', True, RED)
+        #                     losts = sfont.render('YOU LOST A SHIP', True, RED)
+        #                     # pygame.display.set_caption("YOU LOST")
+        #                     pygame.draw.rect(SCREEN, BLACK, end, 0)
+        #                     SCREEN.blit(shipremain, (135, 160))
+        #                     SCREEN.blit(losts, (180, 125)),
+        #                     SCREEN.blit(space, (150, 200))
+        #                     grid = False
+        #                     pygame.mixer.Sound("yoda.mp3").play()
+        #             print(F'You have made {shots} shots')
+        #             print(f"You Have {ENEMYSHIPS} ships left")
+        #             print(f"You Have {YOURSHIPS}  enemy ships left")
+        #
+        #             if e1 == True and e2 == True and e3 == True and e4 == True:
+        #                 pradar = pygame.image.load("radar.png")
+        #                 SCREEN.blit(pradar, (0, 0))
+        #                 font = pygame.font.SysFont('impact', 60)
+        #                 sfont = pygame.font.SysFont('impact', 30)
+        #                 quit = sfont.render('Press q to quit', True, RED)
+        #                 lost = font.render('YOU LOST', True, RED)
+        #                 pygame.display.set_caption("YOU LOST")
+        #                 pygame.draw.rect(SCREEN, BLACK, end, 0)
+        #                 SCREEN.blit(lost, (140, 100))
+        #                 SCREEN.blit(quit, (165, 250))
+        #                 grid = False
+        #             if s1 == True and s2 == True and s3 == True and s4 == True:
+        #                 pradar = pygame.image.load("radar.png")
+        #                 SCREEN.blit(pradar, (0, 0))
+        #                 pygame.display.set_caption("YOU WON")
+        #                 font = pygame.font.SysFont('impact', 60)
+        #                 sfont = pygame.font.SysFont('impact', 30)
+        #                 quit = sfont.render('Press q to quit', True, WHITE)
+        #                 win = font.render('YOU WON', True, WHITE)
+        #                 pygame.display.set_caption("YOU LOST")
+        #                 pygame.draw.rect(SCREEN, BLACK, end, 0)
+        #                 SCREEN.blit(win, (140, 100))
+        #                 SCREEN.blit(quit, (165, 250))
+        #                 grid = False
+        #         if event.type == pygame.KEYDOWN:
+        #             if event.key == pygame.K_q:  # PRESTON WILSON HELPED
+        #                 pygame.quit()
+        #                 sys.exit()
+        #
+        #             if event.key == pygame.K_SPACE:
+        #                 grid = True
+        #                 pygame.draw.rect(SCREEN, BLACK, end, 0)
+        #                 if s1 == True:
+        #                     pygame.draw.rect(SCREEN, RED, ship1, 0)
+        #                 if s2 == True:
+        #                     pygame.draw.rect(SCREEN, RED, ship2, 0)
+        #                 if s3 == True:
+        #                     pygame.draw.rect(SCREEN, RED, ship3, 0)
+        #                 if s4 == True:
+        #                     pygame.draw.rect(SCREEN, RED, ship4, 0)
+        #
+        #                 if e1 == True:
+        #                     pygame.draw.rect(SCREEN, BLUE, ship5, 0)
+        #                 if e2 == True:
+        #                     pygame.draw.rect(SCREEN, BLUE, ship6, 0)
+        #                 if e3 == True:
+        #                     pygame.draw.rect(SCREEN, BLUE, ship7, 0)
+        #                 if e4 == True:
+        #                     pygame.draw.rect(SCREEN, BLUE, ship8, 0)
+        #                 for x, y in ds.items():
+        #                     dhit = (x, y, 10, 10)
+        #                     pygame.draw.rect(SCREEN, WHITE, dhit, 0)
+        #
+        #         if event.type == pygame.QUIT:
+        #             pygame.quit()
+        #
+        #             sys.exit()
+        #
+        #     pygame.display.update()
+        #
+        #     main()
+    pygame.display.update()
 MULTIPLAYER()

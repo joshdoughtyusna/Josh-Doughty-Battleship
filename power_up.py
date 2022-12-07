@@ -235,7 +235,8 @@ def POWER():
                 if event.type == pygame.MOUSEBUTTONDOWN:
 
 
-                    # pygame.mixer.Sound("hit.wav").play()
+
+
                     shots += 1
                     mousex, mousey = pygame.mouse.get_pos()
                     ds[mousex] = mousey
@@ -313,18 +314,22 @@ def POWER():
 
 
                     if rect1.collidepoint(pygame.mouse.get_pos()):
+                        pygame.mixer.Sound("hit.wav").play()
                         pygame.draw.rect(SCREEN, RED, ship1, 0)
                         s1 = True
 
                     elif rect2.collidepoint(pygame.mouse.get_pos()):
+                        pygame.mixer.Sound("hit.wav").play()
                         pygame.draw.rect(SCREEN, RED, ship2, 0)
                         s2 = True
 
                     elif rect3.collidepoint(pygame.mouse.get_pos()):
+                        pygame.mixer.Sound("hit.wav").play()
                         pygame.draw.rect(SCREEN, RED, ship3, 0)
                         s3 = True
 
                     elif rect4.collidepoint(pygame.mouse.get_pos()):
+                        pygame.mixer.Sound("hit.wav").play()
                         pygame.draw.rect(SCREEN, RED, ship4, 0)
                         s4 = True
 
@@ -336,7 +341,7 @@ def POWER():
                         pygame.draw.rect(SCREEN, WHITE, hit, 0)
 
                     if ES == True:
-                        time.sleep(0.5)
+                        time.sleep(0.3)
                         cx = randrange(0, 500, 50)
                         cy = randrange(0, 500, 50)
                         cshot = (cx, cy, 50, 50)
@@ -359,64 +364,80 @@ def POWER():
                     # pygame.draw.rect(SCREEN, BLACK, cshot, 0)
                     if ff == False:
                         if rect5.collidepoint(cx, cy):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, BLUE, ship5, 0)
                             e1 = True
 
                         elif rect6.collidepoint(cx, cy):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, BLUE, ship6, 0)
                             e2 = True
 
                         elif rect7.collidepoint(cx, cy):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, BLUE, ship7, 0)
                             e3 = True
 
                         elif rect8.collidepoint(cx, cy):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, BLUE, ship8, 0)
                             e4 = True
                     if ff == True:
                         if rect5.collidepoint(cx, cy):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, BLUE, ship5, 0)
                             e1 = True
 
                         elif rect6.collidepoint(cx, cy):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, BLUE, ship6, 0)
                             e2 = True
 
                         elif rect7.collidepoint(cx, cy):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, BLUE, ship7, 0)
                             e3 = True
 
                         elif rect8.collidepoint(cx, cy):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, BLUE, ship8, 0)
                             e4 = True
                         elif rect5.collidepoint(pygame.mouse.get_pos()):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, BLUE, ship5, 0)
                             e1 = True
 
                         elif rect6.collidepoint(pygame.mouse.get_pos()):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, BLUE, ship6, 0)
                             e2 = True
 
                         elif rect7.collidepoint(pygame.mouse.get_pos()):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, BLUE, ship7, 0)
                             e3 = True
 
                         elif rect8.collidepoint(pygame.mouse.get_pos()):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, BLUE, ship8, 0)
                             e4 = True
                         elif rect1.collidepoint(pygame.mouse.get_pos()):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, RED, ship1, 0)
                             s1 = True
 
                         elif rect2.collidepoint(pygame.mouse.get_pos()):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, RED, ship2, 0)
                             s2 = True
 
                         elif rect3.collidepoint(pygame.mouse.get_pos()):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, RED, ship3, 0)
                             s3 = True
 
                         elif rect4.collidepoint(pygame.mouse.get_pos()):
+                            pygame.mixer.Sound("hit.wav").play()
                             pygame.draw.rect(SCREEN, RED, ship4, 0)
                             s4 = True
                         if s1 == True and s2 == True and s3 == True and s4 == True:
@@ -564,12 +585,14 @@ def POWER():
                         if e4 == True:
                             pygame.draw.rect(SCREEN, BLUE, ship8, 0)
 
+
                         for x, y in ds.items():
                             dhit = (x, y, 10, 10)
                             pygame.draw.rect(SCREEN, WHITE, dhit, 0)
                         pygame.draw.rect(SCREEN, rc1, power2, 0)
                         pygame.draw.rect(SCREEN, rc2, power1, 0)
                         pygame.draw.rect(SCREEN, rc3, power3, 0)
+
                         # if ff == True:
                         #     pygame.draw.rect(SCREEN, PINK, ship1, 0)
                         #     pygame.draw.rect(SCREEN, PINK, ship2, 0)
@@ -590,4 +613,4 @@ def POWER():
 
 
     main()
-POWER()
+#POWER()

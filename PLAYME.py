@@ -79,13 +79,23 @@ def HOME():
         pygame.draw.circle(grid, GREEN, (250, 250), 250, 4)
         if angle <= 11.0 and angle >= 10.6:
             pygame.draw.rect(SCREEN,RED,(50,200,50,50),0)
+            pygame.mixer.Sound("Sonar.mp3").play()
+
+
         if angle <= 7.9 and angle >= 7.5:
             pygame.draw.rect(SCREEN, RED, (400, 250, 50, 50), 0)
+            pygame.mixer.Sound("Sonar.mp3").play()
+
         if angle <= 12 and angle >= 11.5:
             pygame.draw.rect(SCREEN, RED, (150, 300, 50, 50), 0)
+            pygame.mixer.Sound("Sonar.mp3").play()
+
 
         if angle <= 9.9 and angle >= 8.7:
             SCREEN.blit(battleship, (bbx + 13, bby+37))
+
+            pygame.mixer.Sound("Sonar.mp3").play()
+
         # if angle <=13 and angle >=12.2:
         SCREEN.blit(multiplayer, (bcx + 45, bmy-13))
 
